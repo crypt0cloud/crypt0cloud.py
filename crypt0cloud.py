@@ -7,7 +7,7 @@ class CryptoCloud:
         self.client = Client(endpoint)
         self.cry = crypt0.Crypt0graphy()
 
-    def CreateUser(self, user):
+    def CreateKey(self, idval):
         b1 = self.client.getCurrentBlock()
         nid = self.client.getNodeId()
 
@@ -15,7 +15,7 @@ class CryptoCloud:
 
         t = dict([
             ("AppID", self.cry.base64Encode(bytes(kp.verify_key))),
-            ("Payload", user),
+            ("Payload", idval),
             ("SignKind", "NewUser"),
             ("SignerKinds", ["NewUser"]),
             ("FromNode", nid),
